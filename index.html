@@ -377,7 +377,7 @@
 
     .mail-body{ padding:16px 16px; }
 
-    #win-portfolio, #win-about, #win-mail, #win-preview, #win-trash{
+    #win-portfolio, #win-about, #win-mail, #win-preview, #win-trash, #win-certyfikat{
       width:100vw; height:calc(100vh - 34px - 66px);
     }
   }
@@ -530,6 +530,21 @@
     </div>
   </div>
 
+  <!-- WINDOW: CERTYFIKAT -->
+  <div class="window hidden" id="win-certyfikat" style="width:460px; height:560px; top:70px; left:260px;">
+    <div class="titlebar">
+      <div class="traffic">
+        <span class="red" onclick="closeWin('win-certyfikat')"></span>
+        <span class="yellow" onclick="minimizeWin('win-certyfikat')"></span>
+        <span class="green" onclick="toggleMax('win-certyfikat')"></span>
+      </div>
+      <div class="win-title">Certyfikat.pdf</div>
+    </div>
+    <div class="win-body" style="background:rgba(0,0,0,0.1); justify-content:center; padding:16px; overflow:auto;">
+      <img src="grafiki/certyfikat.png" alt="Certyfikat — Grafika komputerowa przy wsparciu AI" style="max-width:100%; height:auto; box-shadow:0 10px 30px rgba(0,0,0,0.25); border-radius:4px; margin:auto; display:block;">
+    </div>
+  </div>
+
   <!-- WINDOW: TRASH -->
   <div class="window hidden" id="win-trash" style="width:300px; height:220px; top:220px; left:600px;">
     <div class="titlebar">
@@ -562,6 +577,10 @@
       <div class="dock-item" onclick="bounce(this); openWin('win-mail')">
         <div class="icon-tile" style="background:linear-gradient(135deg,#28c840,#0AC8A0);">✉️</div>
         <span class="tooltip">Kontakt</span>
+      </div>
+      <div class="dock-item" onclick="bounce(this); openWin('win-certyfikat')">
+        <div class="icon-tile" style="background:linear-gradient(135deg,#FFD60A,#FF9F0A);">🎓</div>
+        <span class="tooltip">Certyfikat</span>
       </div>
       <div class="dock-sep"></div>
       <div class="dock-item" onclick="bounce(this); openWin('win-trash')">
