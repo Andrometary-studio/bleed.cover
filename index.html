@@ -13,79 +13,77 @@
     --font-mono: "SF Mono", "Menlo", monospace;
 
     /* LIGHT THEME TOKENS */
-    --l-wall-1:#8ec7ff;
-    --l-wall-2:#c9a4ff;
-    --l-wall-3:#ffd7e8;
-    --l-menubar-bg: rgba(255,255,255,0.55);
-    --l-menubar-fg: #1d1d1f;
-    --l-win-bg: rgba(255,255,255,0.78);
-    --l-win-border: rgba(0,0,0,0.08);
-    --l-win-fg: #1d1d1f;
-    --l-win-fg-dim: rgba(0,0,0,0.55);
-    --l-sidebar-bg: rgba(246,246,248,0.6);
-    --l-dock-bg: rgba(255,255,255,0.45);
-    --l-card-bg: rgba(255,255,255,0.65);
-    --l-card-border: rgba(0,0,0,0.06);
+    --l-wall-1:#8ec7ff; --l-wall-2:#c9a4ff; --l-wall-3:#ffd7e8;
+    --l-menubar-bg: rgba(255,255,255,0.55); --l-menubar-fg: #1d1d1f;
+    --l-win-bg: rgba(255,255,255,0.78); --l-win-border: rgba(0,0,0,0.08);
+    --l-win-fg: #1d1d1f; --l-win-fg-dim: rgba(0,0,0,0.55);
+    --l-sidebar-bg: rgba(246,246,248,0.6); --l-dock-bg: rgba(255,255,255,0.45);
+    --l-card-bg: rgba(255,255,255,0.65); --l-card-border: rgba(0,0,0,0.06);
     --l-input-bg: rgba(0,0,0,0.04);
 
     /* DARK THEME TOKENS */
-    --d-wall-1:#04070f;
-    --d-wall-2:#0d1424;
-    --d-wall-3:#1a0f2e;
-    --d-menubar-bg: rgba(30,30,32,0.55);
-    --d-menubar-fg: #f5f5f7;
-    --d-win-bg: rgba(40,40,44,0.72);
-    --d-win-border: rgba(255,255,255,0.08);
-    --d-win-fg: #f5f5f7;
-    --d-win-fg-dim: rgba(255,255,255,0.55);
-    --d-sidebar-bg: rgba(28,28,32,0.55);
-    --d-dock-bg: rgba(40,40,44,0.45);
-    --d-card-bg: rgba(255,255,255,0.06);
-    --d-card-border: rgba(255,255,255,0.08);
+    --d-wall-1:#04070f; --d-wall-2:#0d1424; --d-wall-3:#1a0f2e;
+    --d-menubar-bg: rgba(30,30,32,0.55); --d-menubar-fg: #f5f5f7;
+    --d-win-bg: rgba(40,40,44,0.72); --d-win-border: rgba(255,255,255,0.08);
+    --d-win-fg: #f5f5f7; --d-win-fg-dim: rgba(255,255,255,0.55);
+    --d-sidebar-bg: rgba(28,28,32,0.55); --d-dock-bg: rgba(40,40,44,0.45);
+    --d-card-bg: rgba(255,255,255,0.06); --d-card-border: rgba(255,255,255,0.08);
     --d-input-bg: rgba(255,255,255,0.06);
   }
 
   *{box-sizing:border-box;}
   html,body{
     margin:0; padding:0; height:100%; width:100%;
-    font-family: var(--font-ui);
-    overflow:hidden;
-    -webkit-font-smoothing:antialiased;
+    font-family: var(--font-ui); overflow:hidden; -webkit-font-smoothing:antialiased;
   }
 
+  /* Tapety systemowe */
   #desktop{
-    position:relative;
-    height:100vh; width:100vw;
+    position:relative; height:100vh; width:100vw;
     background: radial-gradient(ellipse 120% 80% at 30% 0%, var(--wall-1), var(--wall-2) 55%, var(--wall-3) 100%);
-    transition: background 0.6s ease;
-    overflow:hidden;
+    transition: background 0.6s ease; overflow:hidden;
   }
   body.light #desktop{ --wall-1:var(--l-wall-1); --wall-2:var(--l-wall-2); --wall-3:var(--l-wall-3); }
   body.dark  #desktop{ --wall-1:var(--d-wall-1); --wall-2:var(--d-wall-2); --wall-3:var(--d-wall-3); }
 
-  /* subtle stars for dark mode */
+  /* Alternatywne style tapet */
+  #desktop.wp-neon { background: linear-gradient(135deg, #f107a3 0%, #7b2ff7 100%); }
+  #desktop.wp-sunset { background: linear-gradient(135deg, #ff5e62 0%, #ff9966 100%); }
+  #desktop.wp-nord { background: linear-gradient(135deg, #2e3440 0%, #4c566a 100%); }
+
   #stars{ position:absolute; inset:0; opacity:0; transition:opacity 0.6s ease; pointer-events:none; }
   body.dark #stars{ opacity:1; }
 
-  /* ---------- MENU BAR ---------- */
+  /* ---------- INTERAKTYWNE MENU BAR ---------- */
   #menubar{
     position:fixed; top:0; left:0; right:0; height:26px;
-    background: var(--menubar-bg);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    display:flex; align-items:center; justify-content:space-between;
-    padding:0 14px;
-    font-size:13px; font-weight:500;
-    color: var(--menubar-fg);
-    z-index:9000;
-    user-select:none;
+    background: var(--menubar-bg); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
+    display:flex; align-items:center; justify-content:space-between; padding:0 14px;
+    font-size:13px; font-weight:500; color: var(--menubar-fg); z-index:9999; user-select:none;
   }
   body.light #menubar{ --menubar-bg:var(--l-menubar-bg); --menubar-fg:var(--l-menubar-fg); }
   body.dark  #menubar{ --menubar-bg:var(--d-menubar-bg); --menubar-fg:var(--d-menubar-fg); }
-
-  #menubar .left, #menubar .right{ display:flex; align-items:center; gap:18px; }
-  #menubar .menu-item{ opacity:0.9; cursor:default; }
+  #menubar .left, #menubar .right{ display:flex; align-items:center; gap:6px; }
+  
+  .menu-wrapper { position: relative; display: inline-block; }
+  #menubar .menu-item{ opacity:0.9; cursor:default; padding: 2px 8px; border-radius: 4px; }
+  #menubar .menu-item:hover{ background: rgba(128,128,128,0.2); }
   #menubar .menu-item.bold{ font-weight:700; }
+  
+  .dropdown-menu {
+    position: absolute; top: 24px; left: 0; min-width: 160px;
+    background: var(--win-bg); border: 1px solid var(--win-border);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-radius: 6px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    display: none; flex-direction: column; padding: 4px 0; z-index: 10000;
+  }
+  .dropdown-menu button {
+    background: none; border: none; color: inherit; font-family: inherit; font-size: 13px;
+    text-align: left; padding: 6px 14px; width: 100%; cursor: default;
+  }
+  .dropdown-menu button:hover { background: var(--accent); color: white; }
+  .menu-wrapper:hover .dropdown-menu { display: flex; }
+
   #menubar .icon-btn{
     cursor:pointer; display:flex; align-items:center; font-size:14px;
     background:none; border:none; color:inherit; font-family:inherit;
@@ -94,297 +92,113 @@
   #menubar .icon-btn:hover{ background: rgba(128,128,128,0.18); }
 
   /* ---------- DOCK ---------- */
-  #dock-wrap{
-    position:fixed; bottom:8px; left:0; right:0;
-    display:flex; justify-content:center; z-index:9000;
-    pointer-events:none;
-  }
+  #dock-wrap{ position:fixed; bottom:8px; left:0; right:0; display:flex; justify-content:center; z-index:9000; pointer-events:none; }
   #dock{
-    pointer-events:auto;
-    display:flex; align-items:flex-end; gap:8px;
-    padding:8px 10px;
-    background: var(--dock-bg);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border-radius:18px;
-    border:1px solid rgba(255,255,255,0.25);
-    box-shadow:0 8px 30px rgba(0,0,0,0.25);
-    transition: background 0.6s ease;
+    pointer-events:auto; display:flex; align-items:flex-end; gap:8px; padding:8px 10px;
+    background: var(--dock-bg); backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-radius:18px; border:1px solid rgba(255,255,255,0.25); box-shadow:0 8px 30px rgba(0,0,0,0.25); transition: background 0.6s ease;
   }
   body.light #dock{ --dock-bg: var(--l-dock-bg); }
   body.dark  #dock{ --dock-bg: var(--d-dock-bg); }
 
   .dock-item{
-    width:52px; height:52px;
-    border-radius:13px;
-    display:flex; align-items:center; justify-content:center;
-    font-size:26px;
-    cursor:pointer;
-    transition: transform 0.15s ease, margin 0.15s ease;
-    position:relative;
-    transform-origin:bottom center;
+    width:52px; height:52px; border-radius:13px; display:flex; align-items:center; justify-content:center;
+    font-size:26px; cursor:pointer; transition: transform 0.15s ease, margin 0.15s ease; position:relative; transform-origin:bottom center;
   }
   .dock-item:hover{ transform: translateY(-14px) scale(1.25); }
   .dock-item img, .dock-item .emoji{ pointer-events:none; }
   .dock-item .tooltip{
     position:absolute; bottom:64px; left:50%; transform:translateX(-50%);
     background:rgba(30,30,30,0.85); color:#fff; font-size:12px; padding:3px 9px;
-    border-radius:6px; white-space:nowrap; opacity:0; pointer-events:none;
-    transition:opacity 0.15s ease;
+    border-radius:6px; white-space:nowrap; opacity:0; pointer-events:none; transition:opacity 0.15s ease;
   }
   .dock-item:hover .tooltip{ opacity:1; }
   .dock-sep{ width:1px; align-self:stretch; background:rgba(128,128,128,0.35); margin:4px 2px; }
-  .dock-dot{ position:absolute; bottom:-6px; left:50%; transform:translateX(-50%); width:4px; height:4px; border-radius:50%; background:currentColor; opacity:0.7;}
+  .icon-tile{ width:100%; height:100%; border-radius:13px; display:flex; align-items:center; justify-content:center; font-size:26px; color:#fff; font-weight:600; }
 
-  .icon-tile{
-    width:100%; height:100%; border-radius:13px; display:flex; align-items:center; justify-content:center;
-    font-size:26px; color:#fff; font-weight:600;
-  }
-
-  @keyframes bounce{
-    0%,100%{ transform: translateY(0); }
-    30%{ transform: translateY(-26px); }
-    50%{ transform: translateY(0); }
-    65%{ transform: translateY(-10px); }
-    80%{ transform: translateY(0); }
-  }
+  @keyframes bounce{ 0%,100%{ transform: translateY(0); } 30%{ transform: translateY(-26px); } 50%{ transform: translateY(0); } 65%{ transform: translateY(-10px); } 80%{ transform: translateY(0); } }
   .dock-item.bouncing{ animation: bounce 0.7s ease; }
 
   /* ---------- WINDOWS ---------- */
   .window{
-    position:absolute;
-    background: var(--win-bg);
-    border:1px solid var(--win-border);
-    border-radius: var(--radius-win);
-    box-shadow: 0 25px 60px rgba(0,0,0,0.35), 0 2px 8px rgba(0,0,0,0.15);
-    backdrop-filter: blur(30px) saturate(180%);
-    -webkit-backdrop-filter: blur(30px) saturate(180%);
-    display:flex; flex-direction:column;
-    overflow:hidden;
-    transition: background 0.5s ease, opacity 0.18s ease, transform 0.18s ease;
-    color: var(--win-fg);
+    position:absolute; background: var(--win-bg); border:1px solid var(--win-border); border-radius: var(--radius-win);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.35), 0 2px 8px rgba(0,0,0,0.15); backdrop-filter: blur(30px) saturate(180%); -webkit-backdrop-filter: blur(30px) saturate(180%);
+    display:flex; flex-direction:column; overflow:hidden; transition: background 0.5s ease, opacity 0.18s ease, transform 0.18s ease; color: var(--win-fg);
   }
   body.light .window{ --win-bg:var(--l-win-bg); --win-border:var(--l-win-border); --win-fg:var(--l-win-fg); }
   body.dark  .window{ --win-bg:var(--d-win-bg); --win-border:var(--d-win-border); --win-fg:var(--d-win-fg); }
-
   .window.hidden{ display:none; }
   .window.opening{ animation: winOpen 0.22s cubic-bezier(.2,1,.3,1); }
   @keyframes winOpen{ from{ opacity:0; transform:scale(0.92); } to{ opacity:1; transform:scale(1);} }
 
-  .titlebar{
-    height:38px; flex:0 0 auto;
-    display:flex; align-items:center;
-    padding:0 12px;
-    cursor:grab;
-    -webkit-user-select:none; user-select:none;
-    border-bottom:1px solid var(--win-border);
-    gap:8px;
-    position:relative;
-  }
+  .titlebar{ height:38px; flex:0 0 auto; display:flex; align-items:center; padding:0 12px; cursor:grab; -webkit-user-select:none; user-select:none; border-bottom:1px solid var(--win-border); gap:8px; position:relative; }
   .titlebar:active{ cursor:grabbing; }
   .traffic{ display:flex; gap:8px; z-index:2; }
-  .traffic span{
-    width:12px; height:12px; border-radius:50%;
-    display:inline-block; cursor:pointer;
-    position:relative;
-  }
-  .traffic .red{ background:#ff5f57; }
-  .traffic .yellow{ background:#febc2e; }
-  .traffic .green{ background:#28c840; }
-  .traffic span::after{
-    content:''; position:absolute; inset:0; border-radius:50%;
-    box-shadow: inset 0 0 0 0.5px rgba(0,0,0,0.15);
-  }
-  .win-title{
-    position:absolute; left:0; right:0; text-align:center;
-    font-size:13px; font-weight:600; color: var(--win-fg-dim);
-    pointer-events:none;
-  }
-  body.light .win-title{ --win-fg-dim:var(--l-win-fg-dim); }
-  body.dark  .win-title{ --win-fg-dim:var(--d-win-fg-dim); }
-
+  .traffic span{ width:12px; height:12px; border-radius:50%; display:inline-block; cursor:pointer; position:relative; }
+  .traffic .red{ background:#ff5f57; } .traffic .yellow{ background:#febc2e; } .traffic .green{ background:#28c840; }
+  .traffic span::after{ content:''; position:absolute; inset:0; border-radius:50%; box-shadow: inset 0 0 0 0.5px rgba(0,0,0,0.15); }
+  .win-title{ position:absolute; left:0; right:0; text-align:center; font-size:13px; font-weight:600; color: var(--win-fg-dim); pointer-events:none; }
+  body.light .win-title{ --win-fg-dim:var(--l-win-fg-dim); } body.dark  .win-title{ --win-fg-dim:var(--d-win-fg-dim); }
   .win-body{ flex:1 1 auto; overflow:auto; display:flex; min-height:0; }
 
-  /* Scrollbars macOS-like */
-  .win-body::-webkit-scrollbar{ width:10px; }
-  .win-body::-webkit-scrollbar-thumb{ background: rgba(128,128,128,0.4); border-radius:6px; border:2px solid transparent; background-clip:padding-box;}
-  .win-body::-webkit-scrollbar-track{ background:transparent; }
+  /* ---------- APP: TERMINAL ---------- */
+  .terminal-body { background: #121214; color: #39ff14; font-family: var(--font-mono); font-size: 13px; padding: 12px; flex-direction: column; width: 100%; }
+  .term-output { flex: 1; overflow-y: auto; white-space: pre-wrap; margin-bottom: 8px; }
+  .term-input-row { display: flex; gap: 6px; align-items: center; }
+  .term-input-row input { background: none; border: none; color: inherit; font-family: inherit; font-size: inherit; flex: 1; outline: none; }
 
-  /* ---------- FINDER SIDEBAR (Portfolio window) ---------- */
-  .sidebar{
-    width:170px; flex:0 0 170px;
-    background: var(--sb-bg);
-    border-right:1px solid var(--win-border);
-    padding:14px 8px;
-    font-size:13px;
-    overflow-y:auto;
-  }
-  body.light .sidebar{ --sb-bg: var(--l-sidebar-bg); }
-  body.dark  .sidebar{ --sb-bg: var(--d-sidebar-bg); }
+  /* ---------- APP: WALLPAPERS ---------- */
+  .wp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 16px; width: 100%; }
+  .wp-thumb { border: 2px solid var(--win-border); border-radius: 6px; aspect-ratio: 16/10; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; color: white; text-shadow: 0 1px 4px rgba(0,0,0,0.4); }
+
+  /* Finder, About, Mail etc. style zachowane z poprzedniej wersji */
+  .sidebar{ width:170px; flex:0 0 170px; background: var(--sb-bg); border-right:1px solid var(--win-border); padding:14px 8px; font-size:13px; overflow-y:auto; }
+  body.light .sidebar{ --sb-bg: var(--l-sidebar-bg); } body.dark  .sidebar{ --sb-bg: var(--d-sidebar-bg); }
   .sb-label{ font-size:11px; text-transform:uppercase; letter-spacing:0.04em; opacity:0.5; margin: 6px 8px 4px; }
-  .sb-item{
-    display:flex; align-items:center; gap:8px;
-    padding:6px 8px; border-radius:6px; cursor:pointer; margin-bottom:2px;
-  }
-  .sb-item:hover{ background: rgba(128,128,128,0.15); }
-  .sb-item.active{ background: var(--accent); color:#fff; }
-  .sb-item .dot{ width:9px; height:9px; border-radius:2px; flex:0 0 auto; }
-
+  .sb-item{ display:flex; align-items:center; gap:8px; padding:6px 8px; border-radius:6px; cursor:pointer; margin-bottom:2px; }
+  .sb-item:hover{ background: rgba(128,128,128,0.15); } .sb-item.active{ background: var(--accent); color:#fff; } .sb-item .dot{ width:9px; height:9px; border-radius:2px; flex:0 0 auto; }
   .content-area{ flex:1 1 auto; padding:18px 22px; overflow-y:auto; }
   .content-header{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:14px; }
-  .content-header h2{ margin:0; font-size:19px; font-weight:700; }
-  .content-header .count{ font-size:12px; opacity:0.5; }
-
-  .grid{
-    display:grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap:16px;
-  }
-  .card{
-    background: var(--card-bg); border:1px solid var(--card-border);
-    border-radius:10px; overflow:hidden; cursor:pointer;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-  }
-  body.light .card{ --card-bg:var(--l-card-bg); --card-border:var(--l-card-border); }
-  body.dark  .card{ --card-bg:var(--d-card-bg); --card-border:var(--d-card-border); }
+  .content-header h2{ margin:0; font-size:19px; font-weight:700; } .content-header .count{ font-size:12px; opacity:0.5; }
+  .grid{ display:grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap:16px; }
+  .card{ background: var(--card-bg); border:1px solid var(--card-border); border-radius:10px; overflow:hidden; cursor:pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+  body.light .card{ --card-bg:var(--l-card-bg); --card-border:var(--l-card-border); } body.dark  .card{ --card-bg:var(--d-card-bg); --card-border:var(--d-card-border); }
   .card:hover{ transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,0.18); }
-  .card .thumb{
-    aspect-ratio: 4/3; width:100%;
-    background: repeating-conic-gradient(rgba(128,128,128,0.18) 0% 25%, rgba(128,128,128,0.08) 0% 50%) 50% / 20px 20px;
-    display:flex; align-items:center; justify-content:center;
-    color: var(--win-fg-dim);
-    font-size:12px; text-align:center; padding:10px;
-    position:relative;
-  }
+  .card .thumb{ aspect-ratio: 4/3; width:100%; background: repeating-conic-gradient(rgba(128,128,128,0.18) 0% 25%, rgba(128,128,128,0.08) 0% 50%) 50% / 20px 20px; display:flex; align-items:center; justify-content:center; color: var(--win-fg-dim); font-size:12px; text-align:center; padding:10px; position:relative; }
   .card .thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
-  .card .thumb .ph-icon{ font-size:28px; margin-bottom:6px; display:block; }
-  .card .meta{ padding:9px 11px; }
-  .card .meta .name{ font-size:12.5px; font-weight:600; }
-  .card .meta .tag{ font-size:11px; opacity:0.55; margin-top:2px; }
-
-  /* ---------- About window ---------- */
+  .card .meta{ padding:9px 11px; } .card .meta .name{ font-size:12.5px; font-weight:600; } .card .meta .tag{ font-size:11px; opacity:0.55; margin-top:2px; }
   .about-body{ display:flex; flex-direction:column; align-items:center; text-align:center; padding:34px 30px; gap:14px; width:100%; }
-  .avatar{
-    width:96px; height:96px; border-radius:50%;
-    background: linear-gradient(135deg, var(--accent), var(--accent-2));
-    display:flex; align-items:center; justify-content:center;
-    font-size:36px; color:#fff; font-weight:700;
-    box-shadow:0 6px 20px rgba(0,0,0,0.2);
-  }
-  .about-body h1{ margin:0; font-size:20px; }
-  .about-body .role{ font-size:13px; opacity:0.6; margin-top:-8px; }
-  .about-body p.bio{ font-size:13.5px; line-height:1.6; opacity:0.85; max-width:380px; }
-  .skills{ display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:4px; }
-  .skill-pill{
-    font-size:11.5px; padding:5px 11px; border-radius:20px;
-    background: rgba(128,128,128,0.15); font-weight:600;
-  }
-  .social-row{ display:flex; gap:10px; margin-top:8px; }
-  .social-row a{
-    width:34px; height:34px; border-radius:50%; background: rgba(128,128,128,0.15);
-    display:flex; align-items:center; justify-content:center; color:inherit; text-decoration:none;
-    font-size:15px;
-  }
-  .social-row a:hover{ background: var(--accent); color:#fff; }
-
-  /* ---------- Contact / Mail window ---------- */
-  .mail-body{ display:flex; flex-direction:column; width:100%; padding:22px 26px; gap:12px; }
-  .mail-body label{ font-size:11.5px; font-weight:600; opacity:0.6; text-transform:uppercase; letter-spacing:0.03em; }
-  .mail-field{ display:flex; flex-direction:column; gap:5px; }
-  .mail-field input, .mail-field textarea{
-    font-family:inherit; font-size:13.5px; padding:9px 11px;
-    border-radius:8px; border:1px solid var(--win-border);
-    background: var(--input-bg); color:inherit; resize:none; outline:none;
-  }
-  body.light .mail-field input, body.light .mail-field textarea{ --input-bg:var(--l-input-bg); }
-  body.dark  .mail-field input, body.dark  .mail-field textarea{ --input-bg:var(--d-input-bg); }
+  .avatar{ width:96px; height:96px; border-radius:50%; background: linear-gradient(135deg, var(--accent), var(--accent-2)); display:flex; align-items:center; justify-content:center; font-size:36px; color:#fff; font-weight:700; box-shadow:0 6px 20px rgba(0,0,0,0.2); }
+  .about-body h1{ margin:0; font-size:20px; } .about-body .role{ font-size:13px; opacity:0.6; margin-top:-8px; } .about-body p.bio{ font-size:13.5px; line-height:1.6; opacity:0.85; max-width:380px; }
+  .skills{ display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:4px; } .skill-pill{ font-size:11.5px; padding:5px 11px; border-radius:20px; background: rgba(128,128,128,0.15); font-weight:600; }
+  .social-row{ display:flex; gap:10px; margin-top:8px; } .social-row a{ width:34px; height:34px; border-radius:50%; background: rgba(128,128,128,0.15); display:flex; align-items:center; justify-content:center; color:inherit; text-decoration:none; font-size:15px; } .social-row a:hover{ background: var(--accent); color:#fff; }
+  .mail-body{ display:flex; flex-direction:column; width:100%; padding:22px 26px; gap:12px; } .mail-body label{ font-size:11.5px; font-weight:600; opacity:0.6; text-transform:uppercase; letter-spacing:0.03em; }
+  .mail-field{ display:flex; flex-direction:column; gap:5px; } .mail-field input, .mail-field textarea{ font-family:inherit; font-size:13.5px; padding:9px 11px; border-radius:8px; border:1px solid var(--win-border); background: var(--input-bg); color:inherit; resize:none; outline:none; }
+  body.light .mail-field input, body.light .mail-field textarea{ --input-bg:var(--l-input-bg); } body.dark  .mail-field input, body.dark  .mail-field textarea{ --input-bg:var(--d-input-bg); }
   .mail-field input:focus, .mail-field textarea:focus{ box-shadow: 0 0 0 3px rgba(10,132,255,0.35); }
-  .send-btn{
-    align-self:flex-end; margin-top:6px;
-    background: var(--accent); color:#fff; border:none;
-    padding:9px 20px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer;
-  }
-  .send-btn:hover{ filter:brightness(1.08); }
-  .send-note{ font-size:12px; opacity:0.55; margin-top:-4px; }
-
-  /* ---------- Preview (image viewer) window ---------- */
-  .preview-body{ display:flex; align-items:center; justify-content:center; width:100%; background:rgba(0,0,0,0.15); }
-  .preview-body .thumb{ width:80%; height:80%; }
-
-  /* ---------- Trash empty ---------- */
-  .empty-body{ display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; gap:8px; opacity:0.6; }
-  .empty-body .big-icon{ font-size:48px; }
-
-  /* desktop icons top-left (optional) */
+  .send-btn{ align-self:flex-end; margin-top:6px; background: var(--accent); color:#fff; border:none; padding:9px 20px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer; transition: opacity 0.2s ease; }
+  .send-btn:hover{ filter:brightness(1.08); } .send-btn:disabled{ opacity:0.5; cursor:not-allowed; } .send-note{ font-size:12px; opacity:0.55; margin-top:-4px; }
+  .preview-body{ display:flex; align-items:center; justify-content:center; width:100%; background:rgba(0,0,0,0.15); } .preview-body .thumb{ width:80%; height:80%; }
+  .empty-body{ display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; gap:8px; opacity:0.6; } .empty-body .big-icon{ font-size:48px; }
   #desktop-icons{ position:absolute; top:40px; left:16px; display:flex; flex-direction:column; gap:18px; }
-  .d-icon{ display:flex; flex-direction:column; align-items:center; gap:4px; width:74px; cursor:default; }
-  .d-icon .glyph{ font-size:34px; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.3)); }
-  .d-icon .lbl{ font-size:11.5px; color:#fff; text-shadow:0 1px 3px rgba(0,0,0,0.6); text-align:center; }
-
+  .d-icon{ display:flex; flex-direction:column; align-items:center; gap:4px; width:74px; cursor:default; outline: none; }
+  .d-icon .glyph{ font-size:34px; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.3)); } .d-icon .lbl{ font-size:11.5px; color:#fff; text-shadow:0 1px 3px rgba(0,0,0,0.6); text-align:center; }
   ::selection{ background: rgba(10,132,255,0.35); }
 
-  /* ===================== RESPONSYWNOŚĆ / MOBILE ===================== */
   @media (max-width: 768px){
-    #menubar{ height:32px; padding:0 8px; font-size:12px; }
-    #menubar .left{ gap:10px; }
-    #menubar .right{ gap:10px; }
-    #menubar .left .menu-item:not(.bold){ display:none; } /* ukryj Plik/Edycja/Widok/Okno/Pomoc */
-    #menubar .right .menu-item:nth-child(2),
-    #menubar .right .menu-item:nth-child(3){ display:none; } /* ukryj wifi/baterię, zostaw zegar i motyw */
-
-    #dock-wrap{ bottom:6px; }
-    #dock{ padding:6px 8px; gap:5px; border-radius:16px; }
-    .dock-item{ width:44px; height:44px; }
-    .dock-item .icon-tile{ font-size:21px; border-radius:11px; }
-    .dock-item:hover{ transform:none; } /* brak dokładnego hover na dotyku */
-    .dock-item:active{ transform: scale(1.12); }
-    .dock-item .tooltip{ display:none; } /* tooltips bez sensu na dotyku */
-
-    #desktop-icons{ display:none; } /* nie kolidują z oknem na małym ekranie */
-
-    /* Okna: pełny ekran, bez swobodnego przeciągania/skalowania */
-    .window{
-      position:fixed !important;
-      top:34px !important; left:0 !important;
-      width:100vw !important; height:calc(100vh - 34px - 66px) !important;
-      border-radius:0;
-      max-width:100vw;
-    }
-    .titlebar{ cursor:default; }
-    .titlebar:active{ cursor:default; }
-
-    .sidebar{
-      width:100%; flex:0 0 auto;
-      display:flex; flex-direction:row; align-items:center;
-      overflow-x:auto; overflow-y:hidden;
-      padding:10px 10px 8px;
-      border-right:none; border-bottom:1px solid var(--win-border);
-      gap:6px;
-      white-space:nowrap;
-    }
-    .win-body{ flex-direction:column; }
-    .sb-label{ display:none; }
-    .sb-item{ margin-bottom:0; flex:0 0 auto; }
-
-    .content-area{ padding:14px 14px; }
-    .content-header h2{ font-size:16px; }
-    .grid{ grid-template-columns: repeat(2, 1fr); gap:10px; }
-    .card .meta .name{ font-size:11.5px; }
-    .card .meta .tag{ font-size:10px; }
-
-    .about-body{ padding:24px 18px; }
-    .about-body img{ width:80px !important; }
-    .about-body h1{ font-size:18px; }
-    .about-body p.bio{ font-size:13px; }
-
+    #menubar .left .menu-wrapper:not(:first-child){ display:none; }
+    #menubar .left .menu-item.bold{ display: inline-block; }
+    #menubar .right .menu-item:nth-child(2), #menubar .right .menu-item:nth-child(3){ display:none; }
+    #dock-wrap{ bottom:6px; } #dock{ padding:6px 8px; gap:5px; border-radius:16px; } .dock-item{ width:44px; height:44px; } .dock-item .icon-tile{ font-size:21px; border-radius:11px; } .dock-item:hover{ transform:none; } .dock-item:active{ transform: scale(1.12); } .dock-item .tooltip{ display:none; }
+    #desktop-icons{ display:flex; } .d-icon{ width:64px; } .d-icon .glyph{ font-size:28px; }
+    .window{ position:fixed !important; top:34px !important; left:0 !important; width:100vw !important; height:calc(100vh - 34px - 66px) !important; border-radius:0; max-width:100vw; }
+    .titlebar{ cursor:default; } .titlebar:active{ cursor:default; }
+    .sidebar{ width:100%; flex:0 0 auto; display:flex; flex-direction:row; align-items:center; overflow-x:auto; overflow-y:hidden; padding:10px 10px 8px; border-right:none; border-bottom:1px solid var(--win-border); gap:6px; white-space:nowrap; }
+    .win-body{ flex-direction:column; } .sb-label{ display:none; } .sb-item{ margin-bottom:0; flex:0 0 auto; }
+    .content-area{ padding:14px 14px; } .content-header h2{ font-size:16px; } .grid{ grid-template-columns: repeat(2, 1fr); gap:10px; } .card .meta .name{ font-size:11.5px; } .card .meta .tag{ font-size:10px; }
+    .about-body{ padding:24px 18px; } .about-body img{ width:80px !important; } .about-body h1{ font-size:18px; } .about-body p.bio{ font-size:13px; }
     .mail-body{ padding:16px 16px; }
-
-    #win-portfolio, #win-about, #win-mail, #win-preview, #win-trash, #win-certyfikat{
-      width:100vw; height:calc(100vh - 34px - 66px);
-    }
-  }
-
-  @media (max-width: 420px){
-    .grid{ grid-template-columns: 1fr 1fr; gap:8px; }
-    .dock-item{ width:40px; height:40px; }
+    #win-portfolio, #win-about, #win-mail, #win-preview, #win-trash, #win-certyfikat, #win-terminal, #win-wallpapers, #win-music{ width:100vw; height:calc(100vh - 34px - 66px); }
   }
 </style>
 </head>
@@ -394,22 +208,43 @@
   <canvas id="stars"></canvas>
 
   <div id="desktop-icons">
-    <div class="d-icon" ondblclick="openWin('win-portfolio')">
+    <div class="d-icon" role="button" tabindex="0" aria-label="Otwórz folder moje prace" ondblclick="openWin('win-portfolio')" onclick="if(window.matchMedia('(max-width: 768px)').matches) openWin('win-portfolio')">
       <div class="glyph">🖼️</div>
       <div class="lbl">Moje_Prace</div>
     </div>
   </div>
 
-  <!-- MENU BAR -->
+  <!-- INTERAKTYWNE MENU BAR Z ROZWIJANYMI OPCJAMI -->
   <div id="menubar">
     <div class="left">
-      <span class="menu-item bold" style="font-size:15px;"></span>
-      <span class="menu-item bold">bleed.cover</span>
-      <span class="menu-item">Plik</span>
-      <span class="menu-item">Edycja</span>
-      <span class="menu-item">Widok</span>
-      <span class="menu-item">Okno</span>
-      <span class="menu-item">Pomoc</span>
+      <span class="menu-item bold" style="font-size:15px; margin-right: -8px;">🎨</span>
+      <div class="menu-wrapper">
+        <span class="menu-item bold">bleed.cover</span>
+        <div class="dropdown-menu">
+          <button onclick="openWin('win-about')">O systemie...</button>
+        </div>
+      </div>
+      <div class="menu-wrapper">
+        <span class="menu-item">Plik</span>
+        <div class="dropdown-menu">
+          <button onclick="openWin('win-mail')">Nowy projekt...</button>
+        </div>
+      </div>
+      <div class="menu-wrapper">
+        <span class="menu-item">Widok</span>
+        <div class="dropdown-menu">
+          <button onclick="openWin('win-wallpapers')">Zmień tapetę...</button>
+        </div>
+      </div>
+      <div class="menu-wrapper">
+        <span class="menu-item">Okno</span>
+        <div class="dropdown-menu">
+          <button onclick="openWin('win-portfolio')">Portfolio</button>
+          <button onclick="openWin('win-music')">Odtwarzacz muzyki</button>
+          <button onclick="openWin('win-terminal')">Terminal</button>
+          <button onclick="closeAllWins()">Zamknij wszystkie</button>
+        </div>
+      </div>
     </div>
     <div class="right">
       <button class="icon-btn" id="theme-toggle" title="Przełącz motyw">☀️</button>
@@ -423,9 +258,9 @@
   <div class="window hidden" id="win-about" style="width:420px; height:480px; top:90px; left:120px;">
     <div class="titlebar">
       <div class="traffic">
-        <span class="red" onclick="closeWin('win-about')"></span>
-        <span class="yellow" onclick="minimizeWin('win-about')"></span>
-        <span class="green" onclick="toggleMax('win-about')"></span>
+        <span class="red" role="button" aria-label="Zamknij" onclick="closeWin('win-about')"></span>
+        <span class="yellow" role="button" aria-label="Minimalizuj" onclick="minimizeWin('win-about')"></span>
+        <span class="green" role="button" aria-label="Maksymalizuj" onclick="toggleMax('win-about')"></span>
       </div>
       <div class="win-title">O mnie</div>
     </div>
@@ -434,21 +269,14 @@
         <img src="grafiki/bleed_logo.png" alt="bleed.cover logo" style="width:150px; height:auto; filter:drop-shadow(0 6px 16px rgba(0,0,0,0.25));">
         <h1>bleed.cover</h1>
         <div class="role">Miłosz • Grafik komputerowy</div>
-        <p class="bio">
-          Cześć, jestem Miłosz i zajmuję się grafiką od 5 lat. W większości tworzę okładki albumów,
-          ale równie chętnie wykonam dla Ciebie plakat, ulotkę lub wizytówkę. Wszystko robię
-          w ekosystemie Adobe. Skontaktuj się ze mną przez tę stronę lub na Instagramie: <b>bleed.cover</b>.
-        </p>
+        <p class="bio">Cześć, jestem Miłosz i zajmuję się grafiką od 5 lat. W większości tworzę okładki albumów. Skontaktuj się ze mną przez tę stronę lub na Instagramie.</p>
         <div class="skills">
-          <span class="skill-pill">Photoshop</span>
-          <span class="skill-pill">Illustrator</span>
-          <span class="skill-pill">InDesign</span>
-          <span class="skill-pill">Premiere Pro</span>
+          <span class="skill-pill">Photoshop</span><span class="skill-pill">Illustrator</span><span class="skill-pill">InDesign</span>
         </div>
         <div class="social-row">
-          <a href="https://instagram.com/bleed.cover" target="_blank" title="Instagram">📷</a>
-          <a href="#" title="Behance">🎨</a>
-          <a href="#" title="E-mail" onclick="openWin('win-mail'); return false;">✉️</a>
+          <a href="https://instagram.com/bleed.cover" target="_blank">📷</a>
+          <a href="https://www.behance.net" target="_blank">🎨</a>
+          <a href="#" onclick="openWin('win-mail'); return false;">✉️</a>
         </div>
       </div>
     </div>
@@ -458,9 +286,9 @@
   <div class="window hidden" id="win-portfolio" style="width:760px; height:520px; top:60px; left:220px;">
     <div class="titlebar">
       <div class="traffic">
-        <span class="red" onclick="closeWin('win-portfolio')"></span>
-        <span class="yellow" onclick="minimizeWin('win-portfolio')"></span>
-        <span class="green" onclick="toggleMax('win-portfolio')"></span>
+        <span class="red" role="button" onclick="closeWin('win-portfolio')"></span>
+        <span class="yellow" role="button" onclick="minimizeWin('win-portfolio')"></span>
+        <span class="green" role="button" onclick="toggleMax('win-portfolio')"></span>
       </div>
       <div class="win-title">Moje_Prace</div>
     </div>
@@ -469,16 +297,13 @@
         <div class="sb-label">Kategorie</div>
         <div class="sb-item active" data-filter="all" onclick="filterPortfolio(this,'all')"><span class="dot" style="background:#888;"></span>Wszystkie</div>
         <div class="sb-item" data-filter="ilustracja" onclick="filterPortfolio(this,'ilustracja')"><span class="dot" style="background:#0A84FF;"></span>Ilustracje</div>
-        <div class="sb-label">Tagi</div>
-        <div class="sb-item"><span class="dot" style="background:#ff5f57;"></span>Ulubione</div>
-        <div class="sb-item"><span class="dot" style="background:#888;"></span>Ostatnie</div>
       </div>
       <div class="content-area">
         <div class="content-header">
           <h2>Wszystkie prace</h2>
-          <span class="count" id="portfolio-count">8 elementów</span>
+          <span class="count" id="portfolio-count">0 elementów</span>
         </div>
-        <div class="grid" id="portfolio-grid"><!-- cards injected by JS --></div>
+        <div class="grid" id="portfolio-grid"></div>
       </div>
     </div>
   </div>
@@ -486,119 +311,101 @@
   <!-- WINDOW: PREVIEW -->
   <div class="window hidden" id="win-preview" style="width:520px; height:420px; top:130px; left:340px;">
     <div class="titlebar">
-      <div class="traffic">
-        <span class="red" onclick="closeWin('win-preview')"></span>
-        <span class="yellow" onclick="minimizeWin('win-preview')"></span>
-        <span class="green" onclick="toggleMax('win-preview')"></span>
-      </div>
+      <div class="traffic"><span class="red" onclick="closeWin('win-preview')"></span><span class="yellow" onclick="minimizeWin('win-preview')"></span><span class="green" onclick="toggleMax('win-preview')"></span></div>
       <div class="win-title" id="preview-title">Podgląd</div>
     </div>
-    <div class="win-body preview-body">
-      <div class="thumb" id="preview-thumb" style="display:flex;align-items:center;justify-content:center;">
-        <span style="font-size:15px; opacity:0.7;">Wybierz pracę z Portfolio, aby zobaczyć podgląd</span>
-      </div>
-    </div>
+    <div class="win-body preview-body"><div class="thumb" id="preview-thumb"></div></div>
   </div>
 
   <!-- WINDOW: CONTACT / MAIL -->
-  <div class="window hidden" id="win-mail" style="width:400px; height:430px; top:150px; left:480px;">
+  <div class="window hidden" id="win-mail" style="width:400px; height:450px; top:150px; left:480px;">
     <div class="titlebar">
-      <div class="traffic">
-        <span class="red" onclick="closeWin('win-mail')"></span>
-        <span class="yellow" onclick="minimizeWin('win-mail')"></span>
-        <span class="green" onclick="toggleMax('win-mail')"></span>
-      </div>
+      <div class="traffic"><span class="red" onclick="closeWin('win-mail')"></span><span class="yellow" onclick="minimizeWin('win-mail')"></span><span class="green" onclick="toggleMax('win-mail')"></span></div>
       <div class="win-title">Nowa wiadomość</div>
     </div>
     <div class="win-body">
-      <div class="mail-body">
-        <div class="mail-field">
-          <label>Od</label>
-          <input type="email" placeholder="twoj@email.com">
-        </div>
-        <div class="mail-field">
-          <label>Temat</label>
-          <input type="text" placeholder="Zapytanie o współpracę">
-        </div>
-        <div class="mail-field" style="flex:1;">
-          <label>Wiadomość</label>
-          <textarea rows="6" placeholder="Napisz wiadomość..."></textarea>
-        </div>
-        <div class="send-note">Formularz demonstracyjny — podłącz własny backend lub usługę (np. Formspree), aby zacząć odbierać wiadomości.</div>
-        <button class="send-btn" onclick="fakeSend()">Wyślij</button>
-      </div>
+      <form class="mail-body" id="contact-form" onsubmit="sendEmail(event)">
+        <div class="mail-field"><label for="email-input">Od</label><input type="email" id="email-input" name="email" placeholder="twoj@email.com" required></div>
+        <div class="mail-field"><label for="subject-input">Temat</label><input type="text" id="subject-input" name="subject" placeholder="Zapytanie o współpracę" required></div>
+        <div class="mail-field" style="flex:1;"><label for="message-input">Wiadomość</label><textarea id="message-input" name="message" rows="5" placeholder="Napisz wiadomość..." required></textarea></div>
+        <button type="submit" class="send-btn" id="send-form-btn">Wyślij</button>
+      </form>
     </div>
   </div>
 
   <!-- WINDOW: CERTYFIKAT -->
   <div class="window hidden" id="win-certyfikat" style="width:460px; height:560px; top:70px; left:260px;">
     <div class="titlebar">
-      <div class="traffic">
-        <span class="red" onclick="closeWin('win-certyfikat')"></span>
-        <span class="yellow" onclick="minimizeWin('win-certyfikat')"></span>
-        <span class="green" onclick="toggleMax('win-certyfikat')"></span>
-      </div>
+      <div class="traffic"><span class="red" onclick="closeWin('win-certyfikat')"></span><span class="yellow" onclick="minimizeWin('win-certyfikat')"></span><span class="green" onclick="toggleMax('win-certyfikat')"></span></div>
       <div class="win-title">Certyfikat.pdf</div>
     </div>
-    <div class="win-body" style="background:rgba(0,0,0,0.1); justify-content:center; padding:16px; overflow:auto;">
-      <img src="grafiki/certyfikat.png" alt="Certyfikat — Grafika komputerowa przy wsparciu AI" style="max-width:100%; height:auto; box-shadow:0 10px 30px rgba(0,0,0,0.25); border-radius:4px; margin:auto; display:block;">
-    </div>
+    <div class="win-body" style="padding:16px; overflow:auto;"><img src="grafiki/certyfikat.png" alt="Certyfikat" style="max-width:100%; height:auto; display:block; margin:auto;"></div>
   </div>
 
   <!-- WINDOW: TRASH -->
   <div class="window hidden" id="win-trash" style="width:300px; height:220px; top:220px; left:600px;">
     <div class="titlebar">
-      <div class="traffic">
-        <span class="red" onclick="closeWin('win-trash')"></span>
-        <span class="yellow" onclick="minimizeWin('win-trash')"></span>
-        <span class="green" onclick="toggleMax('win-trash')"></span>
-      </div>
+      <div class="traffic"><span class="red" onclick="closeWin('win-trash')"></span><span class="yellow" onclick="minimizeWin('win-trash')"></span><span class="green" onclick="toggleMax('win-trash')"></span></div>
       <div class="win-title">Kosz</div>
     </div>
+    <div class="win-body"><div class="empty-body"><div class="big-icon">🗑️</div><div>Kosz jest pusty</div></div></div>
+  </div>
+
+  <!-- WINDOW: TERMINAL -->
+  <div class="window hidden" id="win-terminal" style="width:500px; height:320px; top:180px; left:160px;">
+    <div class="titlebar">
+      <div class="traffic"><span class="red" onclick="closeWin('win-terminal')"></span><span class="yellow" onclick="minimizeWin('win-terminal')"></span><span class="green" onclick="toggleMax('win-terminal')"></span></div>
+      <div class="win-title">Terminal</div>
+    </div>
+    <div class="win-body terminal-body">
+      <div class="term-output" id="term-out">bleed.os v1.0.0 - wpisz 'help' by uzyskac liste komend.</div>
+      <div class="term-input-row"><span>bleed@system:~$</span><input type="text" id="term-in" autofocus onkeydown="handleTerminal(event)"></div>
+    </div>
+  </div>
+
+  <!-- WINDOW: WALLPAPERS -->
+  <div class="window hidden" id="win-wallpapers" style="width:400px; height:300px; top:120px; left:400px;">
+    <div class="titlebar">
+      <div class="traffic"><span class="red" onclick="closeWin('win-wallpapers')"></span><span class="yellow" onclick="minimizeWin('win-wallpapers')"></span><span class="green" onclick="toggleMax('win-wallpapers')"></span></div>
+      <div class="win-title">Zmiana Tapety</div>
+    </div>
     <div class="win-body">
-      <div class="empty-body">
-        <div class="big-icon">🗑️</div>
-        <div>Kosz jest pusty</div>
+      <div class="wp-grid">
+        <div class="wp-thumb" style="background: radial-gradient(#8ec7ff, #c9a4ff);" onclick="setWallpaper('default')">Systemowa</div>
+        <div class="wp-thumb" style="background: linear-gradient(135deg, #f107a3, #7b2ff7);" onclick="setWallpaper('neon')">Neon</div>
+        <div class="wp-thumb" style="background: linear-gradient(135deg, #ff5e62, #ff9966);" onclick="setWallpaper('sunset')">Sunset</div>
+        <div class="wp-thumb" style="background: linear-gradient(135deg, #2e3440, #4c566a);" onclick="setWallpaper('nord')">Nord Ciemny</div>
       </div>
+    </div>
+  </div>
+
+  <!-- WINDOW: MUSIC (Odtwarzacz Spotify) -->
+  <div class="window hidden" id="win-music" style="width:360px; height:480px; top:80px; left:500px;">
+    <div class="titlebar">
+      <div class="traffic"><span class="red" onclick="closeWin('win-music')"></span><span class="yellow" onclick="minimizeWin('win-music')"></span><span class="green" onclick="toggleMax('win-music')"></span></div>
+      <div class="win-title">Odtwarzacz Muzyki</div>
+    </div>
+    <div class="win-body" style="background:#000; padding:0;">
+      <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/14FXx0UO3wNoW0Wj1wW7vS?utm_source=generator&si=6534e9c2b9794617" width="100%" height="100%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
   </div>
 
   <!-- DOCK -->
   <div id="dock-wrap">
     <div id="dock">
-      <div class="dock-item" onclick="bounce(this); openWin('win-about')">
-        <div class="icon-tile" style="background:linear-gradient(135deg,#0A84FF,#5AC8FA);">🙂</div>
-        <span class="tooltip">O mnie</span>
-      </div>
-      <div class="dock-item" onclick="bounce(this); openWin('win-portfolio')">
-        <div class="icon-tile" style="background:linear-gradient(135deg,#BF5AF2,#FF6482);">🖼️</div>
-        <span class="tooltip">Portfolio</span>
-      </div>
-      <div class="dock-item" onclick="bounce(this); openWin('win-mail')">
-        <div class="icon-tile" style="background:linear-gradient(135deg,#28c840,#0AC8A0);">✉️</div>
-        <span class="tooltip">Kontakt</span>
-      </div>
-      <div class="dock-item" onclick="bounce(this); openWin('win-certyfikat')">
-        <div class="icon-tile" style="background:linear-gradient(135deg,#FFD60A,#FF9F0A);">🎓</div>
-        <span class="tooltip">Certyfikat</span>
-      </div>
+      <div class="dock-item" onclick="bounce(this); openWin('win-about')"><div class="icon-tile" style="background:linear-gradient(135deg,#0A84FF,#5AC8FA);">🙂</div><span class="tooltip">O mnie</span></div>
+      <div class="dock-item" onclick="bounce(this); openWin('win-portfolio')"><div class="icon-tile" style="background:linear-gradient(135deg,#BF5AF2,#FF6482);">🖼️</div><span class="tooltip">Portfolio</span></div>
+      <div class="dock-item" onclick="bounce(this); openWin('win-music')"><div class="icon-tile" style="background:linear-gradient(135deg,#1DB954,#191414);">🎵</div><span class="tooltip">Ostatnio słuchane</span></div>
+      <div class="dock-item" onclick="bounce(this); openWin('win-terminal')"><div class="icon-tile" style="background:linear-gradient(135deg,#222,#444);">📟</div><span class="tooltip">Terminal</span></div>
+      <div class="dock-item" onclick="bounce(this); openWin('win-mail')"><div class="icon-tile" style="background:linear-gradient(135deg,#28c840,#0AC8A0);">✉️</div><span class="tooltip">Kontakt</span></div>
+      <div class="dock-item" onclick="bounce(this); openWin('win-certyfikat')"><div class="icon-tile" style="background:linear-gradient(135deg,#FFD60A,#FF9F0A);">🎓</div><span class="tooltip">Certyfikat</span></div>
       <div class="dock-sep"></div>
-      <div class="dock-item" onclick="bounce(this); openWin('win-trash')">
-        <div class="icon-tile" style="background:linear-gradient(135deg,#8e8e93,#5f5f66);">🗑️</div>
-        <span class="tooltip">Kosz</span>
-      </div>
+      <div class="dock-item" onclick="bounce(this); openWin('win-trash')"><div class="icon-tile" style="background:linear-gradient(135deg,#8e8e93,#5f5f66);">🗑️</div><span class="tooltip">Kosz</span></div>
     </div>
   </div>
 </div>
 
 <script>
-/* ===================== DANE PORTFOLIO =====================
-   Podmień poniższe obiekty na swoje prace.
-   - "src": ścieżka do Twojego pliku graficznego (np. "grafiki/praca1.jpg")
-   - Jeśli zostawisz src puste, pokaże się placeholder z ikoną.
-   - "cat": obecnie tylko "ilustracja" — dodaj nową kategorię (np. "3d")
-     zarówno tutaj, jak i w panelu bocznym (.sidebar), jeśli zechcesz ją przywrócić.
-============================================================ */
 const PORTFOLIO_ITEMS = [
   { id:1,  title:'Europa Peroxide',    cat:'ilustracja', src:'grafiki/europa_peroxide.png',   icon:'🎨', tag:'Okładka albumu' },
   { id:2,  title:'Yung Adisz',         cat:'ilustracja', src:'grafiki/adisz_fan_art.png',      icon:'🎨', tag:'Okładka — fan art' },
@@ -617,90 +424,117 @@ const PORTFOLIO_ITEMS = [
 
 const CAT_LABELS = { all:'Wszystkie prace', ilustracja:'Ilustracje' };
 
+function getElementLabel(count) {
+  if (count === 1) return '1 element';
+  const lastDigit = count % 10; const lastTwoDigits = count % 100;
+  if (lastDigit >= 2 && lastDigit <= 4 && (lastTwoDigits < 10 || lastTwoDigits >= 20)) return count + ' elementy';
+  return count + ' elementów';
+}
+
 function renderPortfolio(filter){
   const grid = document.getElementById('portfolio-grid');
   const items = filter==='all' ? PORTFOLIO_ITEMS : PORTFOLIO_ITEMS.filter(i=>i.cat===filter);
   document.querySelector('.content-header h2').textContent = CAT_LABELS[filter] || 'Wszystkie prace';
-  document.getElementById('portfolio-count').textContent = items.length + ' element' + (items.length===1?'':'y');
+  document.getElementById('portfolio-count').textContent = getElementLabel(items.length);
   grid.innerHTML = items.map(it => `
     <div class="card" onclick="previewItem(${it.id})">
-      <div class="thumb">
-        ${it.src ? `<img src="${it.src}" alt="${it.title}">` : `<span class="ph-icon">${it.icon}</span><span>Wstaw plik:<br><b>${it.title}.jpg</b></span>`}
-      </div>
-      <div class="meta">
-        <div class="name">${it.title}</div>
-        <div class="tag">${it.tag}</div>
-      </div>
+      <div class="thumb"><img src="${it.src}" alt="${it.title}"></div>
+      <div class="meta"><div class="name">${it.title}</div><div class="tag">${it.tag}</div></div>
     </div>
   `).join('');
 }
+
 function filterPortfolio(el, filter){
   document.querySelectorAll('.sb-item').forEach(s=>s.classList.remove('active'));
-  el.classList.add('active');
-  renderPortfolio(filter);
+  el.classList.add('active'); renderPortfolio(filter);
 }
+
 function previewItem(id){
   const it = PORTFOLIO_ITEMS.find(x=>x.id===id);
   document.getElementById('preview-title').textContent = it.title;
-  const thumb = document.getElementById('preview-thumb');
-  thumb.innerHTML = it.src
-    ? `<img src="${it.src}" style="max-width:100%;max-height:100%;object-fit:contain;">`
-    : `<span style="font-size:15px; opacity:0.7; text-align:center; padding:0 30px;">Brak pliku dla „${it.title}". Wstaw grafikę w tablicy PORTFOLIO_ITEMS (src: '...')</span>`;
+  document.getElementById('preview-thumb').innerHTML = `<img src="${it.src}" style="max-width:100%;max-height:100%;object-fit:contain;" alt="${it.title}">`;
   openWin('win-preview');
 }
 renderPortfolio('all');
 
-/* ===================== ZEGAR ===================== */
+/* ===================== LOGIKA TERMINALA ===================== */
+function handleTerminal(e) {
+  if(e.key !== 'Enter') return;
+  const inputEl = document.getElementById('term-in');
+  const outEl = document.getElementById('term-out');
+  const cmd = inputEl.value.trim().toLowerCase();
+  let output = `\nbleed@system:~$ ${inputEl.value}`;
+
+  if (cmd === 'help') {
+    output += `\nDostepne komendy:\n - about : informacje o autorze\n - portfolio : otwiera folder z pracami\n - contact : uruchamia formularz\n - clear : czysci ekran`;
+  } else if (cmd === 'about') {
+    openWin('win-about'); output += `\nOtwieranie okna 'O mnie'...`;
+  } else if (cmd === 'portfolio') {
+    openWin('win-portfolio'); output += `\nOtwieranie okna 'Portfolio'...`;
+  } else if (cmd === 'contact') {
+    openWin('win-mail'); output += `\nOtwieranie formularza kontaktowego...`;
+  } else if (cmd === 'clear') {
+    outEl.textContent = 'Ekran wyczyszczony.'; inputEl.value = ''; return;
+  } else if (cmd === '') {
+    return;
+  } else {
+    output += `\nNieznana komenda: '${cmd}'. Wpisz 'help' aby zobaczyc liste komend.`;
+  }
+  
+  outEl.textContent += output;
+  inputEl.value = '';
+  outEl.scrollTop = outEl.scrollHeight;
+}
+
+/* ===================== APLIKACJA TAPETY ===================== */
+function setWallpaper(type) {
+  const desktop = document.getElementById('desktop');
+  desktop.className = ''; 
+  if(type !== 'default') {
+    desktop.classList.add('wp-' + type);
+  }
+}
+
+/* ===================== MENU SYSTEMOWE ===================== */
+function closeAllWins() {
+  document.querySelectorAll('.window').forEach(w => w.classList.add('hidden'));
+}
+
+/* ===================== ZEGAR & MOTYW ===================== */
 function updateClock(){
-  const now = new Date();
-  const days = ['niedz.','pon.','wt.','śr.','czw.','pt.','sob.'];
-  const d = days[now.getDay()];
-  const dd = String(now.getDate()).padStart(2,'0');
-  const mm = String(now.getMonth()+1).padStart(2,'0');
-  const hh = String(now.getHours()).padStart(2,'0');
-  const mi = String(now.getMinutes()).padStart(2,'0');
-  document.getElementById('clock').textContent = `${d} ${dd} ${mm} ${hh}:${mi}`;
+  const now = new Date(); const days = ['niedz.','pon.','wt.','śr.','czw.','pt.','sob.'];
+  const d = days[now.getDay()]; const dd = String(now.getDate()).padStart(2,'0'); const mm = String(now.getMonth()+1).padStart(2,'0');
+  const hh = String(now.getHours()).padStart(2,'0'); const mi = String(now.getMinutes()).padStart(2,'0');
+  document.getElementById('clock').textContent = `${d} ${dd}.${mm} ${hh}:${mi}`;
 }
 updateClock(); setInterval(updateClock, 10000);
 
-/* ===================== MOTYW ===================== */
 const themeBtn = document.getElementById('theme-toggle');
 function applyTheme(t){
-  document.body.classList.remove('light','dark');
-  document.body.classList.add(t);
-  themeBtn.textContent = t==='light' ? '☀️' : '🌙';
-  drawStars();
+  document.body.classList.remove('light','dark'); document.body.classList.add(t);
+  themeBtn.textContent = t==='light' ? '☀️' : '🌙'; drawStars();
 }
 themeBtn.addEventListener('click', ()=>{
   const cur = document.body.classList.contains('light') ? 'light' : 'dark';
   applyTheme(cur==='light' ? 'dark' : 'light');
 });
 
-/* subtelne gwiazdy w trybie ciemnym */
 function drawStars(){
-  const canvas = document.getElementById('stars');
-  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0,0,canvas.width,canvas.height);
+  const canvas = document.getElementById('stars'); canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  const ctx = canvas.getContext('2d'); ctx.clearRect(0,0,canvas.width,canvas.height);
   if(!document.body.classList.contains('dark')) return;
   for(let i=0;i<140;i++){
-    const x = Math.random()*canvas.width, y = Math.random()*canvas.height*0.7;
-    const r = Math.random()*1.2;
-    ctx.beginPath();
-    ctx.fillStyle = `rgba(255,255,255,${Math.random()*0.6+0.2})`;
-    ctx.arc(x,y,r,0,Math.PI*2); ctx.fill();
+    const x = Math.random()*canvas.width, y = Math.random()*canvas.height*0.7; const r = Math.random()*1.2;
+    ctx.beginPath(); ctx.fillStyle = `rgba(255,255,255,${Math.random()*0.6+0.2})`; ctx.arc(x,y,r,0,Math.PI*2); ctx.fill();
   }
 }
-window.addEventListener('resize', drawStars);
-drawStars();
+window.addEventListener('resize', drawStars); drawStars();
 
 /* ===================== ZARZĄDZANIE OKNAMI ===================== */
 let zTop = 100;
 function bringFront(win){ zTop++; win.style.zIndex = zTop; }
-
 function openWin(id){
-  const win = document.getElementById(id);
-  const wasHidden = win.classList.contains('hidden');
+  const win = document.getElementById(id); const wasHidden = win.classList.contains('hidden');
   win.classList.remove('hidden');
   if(wasHidden){ win.classList.add('opening'); setTimeout(()=>win.classList.remove('opening'), 250); }
   bringFront(win);
@@ -711,81 +545,67 @@ function minimizeWin(id){ document.getElementById(id).classList.add('hidden'); }
 function toggleMax(id){
   const win = document.getElementById(id);
   if(win.dataset.maxed === '1'){
-    win.style.top = win.dataset.prevTop;
-    win.style.left = win.dataset.prevLeft;
-    win.style.width = win.dataset.prevWidth;
-    win.style.height = win.dataset.prevHeight;
+    win.style.top = win.dataset.prevTop; win.style.left = win.dataset.prevLeft;
+    win.style.width = win.dataset.prevWidth; win.style.height = win.dataset.prevHeight;
     win.dataset.maxed = '0';
   } else {
-    win.dataset.prevTop = win.style.top;
-    win.dataset.prevLeft = win.style.left;
-    win.dataset.prevWidth = win.style.width;
-    win.dataset.prevHeight = win.style.height;
-    win.style.top = '30px'; win.style.left = '20px';
-    win.style.width = 'calc(100vw - 40px)';
-    win.style.height = 'calc(100vh - 100px)';
+    win.dataset.prevTop = win.style.top; win.dataset.prevLeft = win.style.left;
+    win.dataset.prevWidth = win.style.width; win.dataset.prevHeight = win.style.height;
+    win.style.top = '30px'; win.style.left = '20px'; win.style.width = 'calc(100vw - 40px)'; win.style.height = 'calc(100vh - 100px)';
     win.dataset.maxed = '1';
   }
 }
 
-function bounce(el){
-  el.classList.remove('bouncing');
-  void el.offsetWidth;
-  el.classList.add('bouncing');
+function bounce(el){ el.classList.remove('bouncing'); void el.offsetWidth; el.classList.add('bouncing'); }
+
+/* BACKEND FORM SUBMIT */
+async function sendEmail(event) {
+  event.preventDefault();
+  const button = document.getElementById('send-form-btn');
+  const emailInput = document.getElementById('email-input').value.trim();
+  const subjectInput = document.getElementById('subject-input').value.trim();
+  const messageInput = document.getElementById('message-input').value.trim();
+  if(!emailInput || !subjectInput || !messageInput) return alert('Wypełnij wszystkie pola.');
+  button.disabled = true; button.textContent = 'Wysyłanie...';
+  const formData = new FormData();
+  formData.append("access_key", "TWÓJ-KLUCZ-ACCESS-KEY");
+  formData.append("email", emailInput); formData.append("subject", subjectInput); formData.append("message", messageInput);
+  try {
+    const response = await fetch("https://api.web3forms.com/submit", { method: "POST", body: formData });
+    const result = await response.json();
+    if (result.success) { alert('Wiadomość wysłana!'); document.getElementById('contact-form').reset(); }
+    else { alert('Błąd: ' + result.message); }
+  } catch (error) { alert('Błąd połączenia.'); }
+  finally { button.disabled = false; button.textContent = 'Wyślij'; }
 }
 
-function fakeSend(){
-  alert('Wiadomość „wysłana”! (To demo — podłącz prawdziwy formularz, np. Formspree / EmailJS / własny backend).');
-}
-
-/* Przeciąganie okien (mysz + dotyk na większych ekranach; wyłączone na telefonach, gdzie okna są pełnoekranowe) */
+/* DRAG FUNCTIONALITY */
 (function enableDrag(){
   const isPhone = () => window.matchMedia('(max-width: 768px)').matches;
-
   document.querySelectorAll('.window').forEach(win=>{
-    const bar = win.querySelector('.titlebar');
-    let offsetX=0, offsetY=0, dragging=false;
-
+    const bar = win.querySelector('.titlebar'); let offsetX=0, offsetY=0, dragging=false;
     function startDrag(clientX, clientY, target){
       if(isPhone()) return;
       if(target.tagName === 'SPAN' && target.parentElement.classList.contains('traffic')) return;
-      dragging = true;
-      const rect = win.getBoundingClientRect();
-      offsetX = clientX - rect.left;
-      offsetY = clientY - rect.top;
-      bringFront(win);
+      dragging = true; const rect = win.getBoundingClientRect();
+      offsetX = clientX - rect.left; offsetY = clientY - rect.top; bringFront(win);
     }
     function moveDrag(clientX, clientY){
       if(!dragging || isPhone()) return;
-      win.style.left = (clientX - offsetX) + 'px';
-      win.style.top = Math.max(26, clientY - offsetY) + 'px';
+      let newX = clientX - offsetX; let newY = clientY - offsetY;
+      const minX = -win.offsetWidth + 80; const maxX = window.innerWidth - 80; const minY = 26; const maxY = window.innerHeight - 40;
+      if(newX < minX) newX = minX; if(newX > maxX) newX = maxX; if(newY < minY) newY = minY; if(newY > maxY) newY = maxY;
+      win.style.left = newX + 'px'; win.style.top = newY + 'px';
     }
     function endDrag(){ dragging = false; }
-
     win.addEventListener('mousedown', ()=>bringFront(win));
     win.addEventListener('touchstart', ()=>bringFront(win), {passive:true});
-
-    bar.addEventListener('mousedown', e=>{
-      startDrag(e.clientX, e.clientY, e.target);
-      e.preventDefault();
-    });
+    bar.addEventListener('mousedown', e=>{ startDrag(e.clientX, e.clientY, e.target); e.preventDefault(); });
     document.addEventListener('mousemove', e=> moveDrag(e.clientX, e.clientY));
     document.addEventListener('mouseup', endDrag);
-
-    bar.addEventListener('touchstart', e=>{
-      const t = e.touches[0];
-      startDrag(t.clientX, t.clientY, e.target);
-    }, {passive:true});
-    bar.addEventListener('touchmove', e=>{
-      if(dragging && !isPhone()) e.preventDefault();
-      const t = e.touches[0];
-      moveDrag(t.clientX, t.clientY);
-    }, {passive:false});
-    bar.addEventListener('touchend', endDrag);
   });
 })();
 
-/* Otwórz okno "O mnie" na start, żeby ekran nie był pusty */
 openWin('win-about');
 </script>
 </body>
